@@ -43,10 +43,6 @@ def calculate_price_difference(stock_data):
     return price_difference, percentage_difference
 
 def app():
-    #-- BOLIERPLATE --#
-    # st.set_page_config(page_title="Stock Dashboard", layout="wide", page_icon="📈")
-    # hide_menu_style = "<style> footer {visibility: hidden;} </style>"
-    # st.markdown(hide_menu_style, unsafe_allow_html=True)
     popular_symbols = ["AAPL", "GOOGL", "MSFT", "AMZN", "TSLA", "META", "NVDA", "JPM"]
     symbol = st.sidebar.selectbox("Select a stock symbol:", popular_symbols, index=None)
     st.sidebar.write('OR')
@@ -99,7 +95,7 @@ def app():
             finviz_news_table = html.find(id='news-table')
             news[stock] = finviz_news_table
 
-            # filter and store neede in news_parsed
+            # filter and store news_parsed
             news_parsed = []
             for stock, news_item in news.items():
                 for row in news_item.findAll('tr'):
