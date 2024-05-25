@@ -12,13 +12,13 @@ from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 
 st.title('Stock Research help!')
 
-API_KEY = st.secrets["api"]["iex_key"]
+# API_KEY = st.secrets["api"]["iex_key"]
 API_BASE_URL = "https://cloud.iexapis.com/stable/"
 
 
 def get_stock_data(symbol, time_range="5y"):
     params = {
-        "token": API_KEY
+        "token": "pk_53ca8663164549eaaed782b5f815961f"
     }
 
     response = requests.get(API_BASE_URL + f"stock/{symbol}/chart/{time_range}", params=params)
