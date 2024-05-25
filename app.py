@@ -51,11 +51,13 @@ def app():
     symbol = st.sidebar.selectbox("Select a stock symbol:", popular_symbols, index=None)
     st.sidebar.write('OR')
     symbol2 = st.sidebar.text_input("Enter a custom symbol:")
+    openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
+    
     if symbol:
         stock = symbol
     else:
         stock = symbol2
-
+    
     if stock:
         st.title("📈 Stock Dashboard")
         stock_data = get_stock_data(stock)
@@ -115,7 +117,8 @@ def app():
             combine_text = ''.join(df['Headline'].tolist())
             # print(combine_text)
 
-            openai.api_key = st.secrets['api']['openai_key']
+            # openai.api_key = st.secrets['api']['openai_key']
+            openai.api_key = openai_api_key
 
             completion = openai.chat.completions.create(
             model="gpt-4",
